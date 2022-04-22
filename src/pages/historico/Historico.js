@@ -90,7 +90,7 @@ const Historico = () =>  {
                 <button disabled = {save} className="btn btn-dark botao-conectar-historico botao-save" onClick={handleSave}>Salvar PDF</button>
                 </div>
                 <div>
-                <Link to='/registro' state={{ cont: addressAccount, vetorUnidades: unidades, contract: contrato}} className={checar}><button disabled ={notAdm} className="btn btn-dark botao-conectar-historico botao-registro-historico" onClick={console.log(addressAccount+"ola")} >Novo Registro</button></Link>
+                <Link to='/registro' state={{ cont: addressAccount, vetorUnidades: unidades}} className={checar}><button disabled ={notAdm} className="btn btn-dark botao-conectar-historico botao-registro-historico" >Novo Registro</button></Link>
             </div>
             </div>
         
