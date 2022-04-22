@@ -1,0 +1,69 @@
+html{
+    background-color: #C4C4C4;
+}
+
+.container-top-historico{
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: line;
+    align-items:    left;
+   
+
+}
+
+img{
+    width: 120px;
+    height: 120px;
+   
+}
+
+.titulo-historico{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20pt;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 15%;  
+    margin-top: 1%;
+    
+}
+
+.botao-conectar-historico{
+    margin-left: 2%;
+}
+
+.carteira-historico{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-left: 2%;
+    font-size: 10pt;
+    width: 470px;
+}
+
+.cont-table-historico{
+    
+    width: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+}
+
+.container-botoes-historico{
+    
+    text-align: center;
+    
+}
+.botao-save{
+    margin-bottom: 2%;
+}
+.botao-registro-historico{
+    margin-right: 2%;
+    margin-bottom: 2%;
+    
+}
+
+.disabled-link {
+    pointer-events: none;
+  }

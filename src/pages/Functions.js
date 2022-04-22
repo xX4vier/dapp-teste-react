@@ -1,29 +1,64 @@
-//import TransactionsJSON from '../build/contracts/Transactions.json';
+import TransactionsJSON from 'contracts/Transactions.json'
 import Web3 from 'web3';
+var contract = require('@truffle/contract');
 
 
 /* var TransactionsJSON = require("../build/contracts/Transactions.json"); */
-//var contract = require('@truffle/contract');
+
 
    
     export const load = async () => {
 
-            const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545')
+            const web3 = new Web3(Web3.givenProvider || 'http://127.0.0.1:7545')
             const accounts = await web3.eth.requestAccounts();
-            return (accounts[0])
+            const addressAccount = accounts[0]      
+
+            const theContract = contract(TransactionsJSON);
+            theContract.setProvider(web3.eth.currentProvider);
+            const todoContract = await theContract.deployed();
+            
+
+            const unidades = await loadUnidades(todoContract, addressAccount);
+            const transacoes = await loadTransacoes(todoContract, addressAccount);
+
+            return [addressAccount, unidades, transacoes, todoContract] 
     }
  
+    const loadUnidades = async (todoContract, addressAccount) => {
+        const unitsCount = await todoContract.unidadesCount()
+        const unidades = [];
+        for (var i = 1; i <= unitsCount; i++) {
+            const unidade = await todoContract.unidades(i);
+            unidades.push(unidade);
+        }
+        return unidades
+        // retorna uma vetor de vetores array = [[id,nome],[id,nome],[id,nome]]
+    }
+
+    const loadTransacoes = async (todoContract, addressAccount) => {
+        const transacCount = await todoContract.transactionsCount()
+        const transacoes = [];
+        for (var i = 1; i <= transacCount; i++) {
+            const transacao = await todoContract.transactions(i);
+            transacoes.push(transacao);
+        }
+        return transacoes
+        // retorna uma vetor de vetores array = [[id,nome],[id,nome],[id,nome]]
+    }
 
 
+    export const addTransacoes = async (todoContract, addressAccount, vetor) => {
+
+    
+        for (var i = 0; i <= vetor.lenght; i++) {
+                todoContract.addTransaction(vetor[i][0], vetor[i][1], vetor[i][2])
+        }
+
+        return console.log("Sucesso")
+        // retorna uma vetor de vetores array = [[id,nome],[id,nome],[id,nome]]
+    }
 
 
-
-
-
-
-/* TransactionsJSON.setProvider(provider);
-
- */
 
 // Função utilizada dentro do useEffect para puxar os dados: executa as outras funções instanciadas aqui
 //const load = async () => {
@@ -55,18 +90,6 @@ import Web3 from 'web3';
 };
  */
 
-// Função que recebe a conta atual utilizada pelo usuário ao se conectar
-
-/* const loadAccount = async () => {
-    const {ethereum} = window
-    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    const addressAccount = accounts[0];
-    return addressAccount;
-};
-
- */
-
-
 //Função que carrega WEB3 no browser
 /* 
 const loadWeb3 = async () => {
@@ -79,5 +102,3 @@ const loadWeb3 = async () => {
     }
 }
  */
-//}
-
