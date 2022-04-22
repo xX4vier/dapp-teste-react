@@ -47,16 +47,30 @@ var contract = require('@truffle/contract');
     }
 
 
-    export const addTransacoes = async (todoContract, addressAccount, vetor) => {
+  /*   export const addTransacoes = async (todoContract, addressAccount, vetor) => {
 
     
         for (var i = 0; i <= vetor.lenght; i++) {
-                todoContract.addTransaction(vetor[i][0], vetor[i][1], vetor[i][2])
-        }
 
-        return console.log("Sucesso")
-        // retorna uma vetor de vetores array = [[id,nome],[id,nome],[id,nome]]
-    }
+            todoContract.addTransaction(vetor[i][0], vetor[i][1], vetor[i][2], { from: addressAccount }).then(function(result){
+            console.log("Value was set to", result.logs[0].args.val);})
+        }
+    } */
+
+    export const addTransacoes = async (todoContract, addressAccount, vetor) => {
+        
+        todoContract.addTransaction("vetor[i][0]", 200, "vetor[i][2]").then(function(result){
+            console.log("ok")
+        })
+    
+        /* for (var i = 0; i <= vetor.lenght; i++) {
+
+            todoContract.addTransaction(vetor[i][0], vetor[i][1], vetor[i][2]).then(function(result){
+            console.log("ok")
+        })
+    } */
+}
+    
 
 
 

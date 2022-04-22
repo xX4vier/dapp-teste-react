@@ -19,7 +19,7 @@ const Registro = () =>  {
       }
     const [valorSuplementado, setValorSuplementado] = useState(''); 
    
-    const [transacoes,setTransacoes] = useState([]); // vetor de transações novas adicionadas pelo usuário
+    const [transacoes,setTransacoes] = useState([["Camara", 200, "12/04"]]); // vetor de transações novas adicionadas pelo usuário
 
      
     const location = useLocation()
@@ -44,11 +44,20 @@ const Registro = () =>  {
     //pega o vetor[0], vetor[1] e vetor[2] e passa como parametro para addtransaction
     //for( var i=0; i<=2;i++)
     //addTransaction(vetor[0], vetor[1],vetor[2])
-    const saveBlockchain = e => {
-        e.preventDefault();
-        addTransacoes(contrato, conta, transacoes)
-    }
 
+    const saveBlockchain = async () => {
+          
+        console.log(contrato, conta, transacoes)
+        //addTransacoes(contrato, conta, transacoes)
+        console.log("clicou")
+        /* for (var i = 0; i <= vetor.lenght; i++) {
+
+            todoContract.addTransaction(vetor[i][0], vetor[i][1], vetor[i][2], { from: addressAccount }).then(function(result){
+            console.log("Value was set to", result.logs[0].args.val);})
+        } */
+        
+
+    }    
 
 
     return(

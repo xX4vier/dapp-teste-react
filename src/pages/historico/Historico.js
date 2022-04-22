@@ -12,7 +12,7 @@ import 'jspdf-autotable'
 const Historico = () =>  {
 
     const [addressAccount, setAddressAccount] = useState('0x0')
-    const [contrato, setContrato] = useState()
+    const [contrato, setContrato] = useState('teste')
     const [unidades, setUnidade] = useState([])
     const [transacoes, setTransacoes] = useState([])
     const [notAdm, setAdm] = useState(true)
@@ -21,11 +21,11 @@ const Historico = () =>  {
     
     const buttonHandler = async() => {
 
-        const [conta, dados, trans, contrato] = await load()
+        const [conta, dados, trans, contract] = await load()
         setAddressAccount(conta)
         setUnidade(dados)
         setTransacoes(trans)
-        setContrato(contrato)
+        setContrato(contract)
         setSave(false)
         if (conta === "0x0048A531a2A18be72b77d9A3b6eA5C2ABE38F1d1")
         setAdm(false)
@@ -90,7 +90,7 @@ const Historico = () =>  {
                 <button disabled = {save} className="btn btn-dark botao-conectar-historico botao-save" onClick={handleSave}>Salvar PDF</button>
                 </div>
                 <div>
-                <Link to='/registro' state={{ cont: addressAccount, vetorUnidades: unidades}} className={checar}><button disabled ={notAdm} className="btn btn-dark botao-conectar-historico botao-registro-historico" >Novo Registro</button></Link>
+                <Link to='/registro' state={{ cont: addressAccount, vetorUnidades: unidades/* , arquivo: contrato */}} className={checar}><button disabled ={notAdm} className="btn btn-dark botao-conectar-historico botao-registro-historico" >Novo Registro</button></Link>
             </div>
             </div>
         

@@ -38,7 +38,7 @@ contract Transactions {
 
     // Função que adiciona uma transação:
 
-    function addTransaction (string memory _name, uint _valorSuplementado, string memory _date) private {
+    function addTransaction (string memory _name, uint _valorSuplementado, string memory _date) public {
         require(owner == msg.sender,"Acesso negado");
         transactionsCount ++;
         transactions[transactionsCount] = Transaction(transactionsCount, _name, _valorSuplementado, _date);
